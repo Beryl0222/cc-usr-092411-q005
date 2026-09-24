@@ -20,10 +20,25 @@
       "type": "string",
       "enum": [
         "ENTRY_ACCEPTED",
+        "MATERIAL_VERSION_SUBMITTED",
+        "INTEREST_DECLARED",
+        "REVIEWER_ASSIGNED",
         "RECUSAL_DECLARED",
+        "QUALIFICATION_DECIDED",
         "SCORE_SUBMITTED",
+        "LATE_INTEREST_RECEIVED",
+        "SCORE_SUSPENDED",
+        "SUBSTITUTE_APPROVED",
         "INCIDENT_CONFIRMED",
-        "DECISION_FINALIZED"
+        "APPEAL_FILED",
+        "RESCORE_REQUESTED",
+        "RESCORE_SIGNED",
+        "DECISION_FINALIZED",
+        "DECISION_PUBLISHED",
+        "DECISION_CORRECTED",
+        "DEADLINE_SCHEDULED",
+        "REQUEST_REJECTED",
+        "REQUEST_DEDUPLICATED"
       ]
     },
     "aggregate_type": {
@@ -32,7 +47,9 @@
         "candidate_entry",
         "judging_assignment",
         "score_sheet",
-        "appeal_case"
+        "appeal_case",
+        "review_round",
+        "request_record"
       ]
     },
     "aggregate_id": {
@@ -50,6 +67,37 @@
     "summary": {
       "type": "string",
       "minLength": 1
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "幂等键：同编号同内容只生效一次；同编号异内容拒绝并产生 REQUEST_REJECTED。"
+    },
+    "group_id": {
+      "type": "string",
+      "description": "评审组别。各组独立排序，评分严格隔离；资格结论可跨组复用。"
+    },
+    "candidate_id": {
+      "type": "string"
+    },
+    "reviewer_id": {
+      "type": "string"
+    },
+    "material_version": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "申诉与重新评分必须指向的具体材料版本。"
+    },
+    "incident_id": {
+      "type": "string",
+      "description": "申诉可指向的程序事件标识。"
+    },
+    "reason": {
+      "type": "string"
+    },
+    "payload": {
+      "type": "object",
+      "description": "事件的具体业务数据；事件一经接收不得原地改写，更正只能追加后继事件。"
     }
   },
   "additionalProperties": true
