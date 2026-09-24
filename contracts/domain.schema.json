@@ -20,19 +20,43 @@
       "type": "string",
       "enum": [
         "ENTRY_ACCEPTED",
+        "QUALIFICATION_CONCLUDED",
+        "MATERIAL_SUBMITTED",
+        "INTEREST_DECLARED",
+        "ASSIGNMENT_FROZEN",
+        "LATE_INTEREST_RECEIVED",
+        "SCORE_SUSPENDED",
         "RECUSAL_DECLARED",
+        "SUBSTITUTE_APPROVED",
         "SCORE_SUBMITTED",
         "INCIDENT_CONFIRMED",
-        "DECISION_FINALIZED"
+        "TIMELINE_SET",
+        "APPEAL_FILED",
+        "RESCORE_PROPOSED",
+        "RESCORE_SIGNATURE_ADDED",
+        "RESCORE_COMPLETED",
+        "DECISION_SIGNATURE_ADDED",
+        "DECISION_FINALIZED",
+        "DECISION_CORRECTION_PROPOSED",
+        "CORRECTION_SIGNATURE_ADDED",
+        "CORRECTION_PUBLISHED",
+        "REQUEST_SEEN"
       ]
     },
     "aggregate_type": {
       "type": "string",
       "enum": [
         "candidate_entry",
+        "qualification_record",
+        "material_pack",
+        "interest_record",
         "judging_assignment",
         "score_sheet",
-        "appeal_case"
+        "incident_record",
+        "group_timeline",
+        "appeal_case",
+        "group_decision",
+        "request_log"
       ]
     },
     "aggregate_id": {
@@ -50,6 +74,9 @@
     "summary": {
       "type": "string",
       "minLength": 1
+    },
+    "payload": {
+      "type": "object"
     }
   },
   "additionalProperties": true
